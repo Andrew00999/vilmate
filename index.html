@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .element {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let divCount = 100;
+        let body = document.body;
+
+        for (let i = 1; i <= divCount; i++) {
+          let div = document.createElement("div");
+          div.classList.add("element");
+          div.textContent = "div" + i;
+          body.appendChild(div);
+        }
+
+        let divElements = document.querySelectorAll(".element");
+
+        divElements.forEach(function (div) {
+          div.addEventListener("click", function () {
+            let currentIndex = Array.from(divElements).indexOf(div);
+            if (currentIndex !== 0) {
+              body.prepend(div);
+            } else {
+              body.appendChild(div);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
